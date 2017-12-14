@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/menu_type_thumbnail"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="160dp" />
+
+            <TextView
+                android:id="@+id/menu_type_name"
+                android:textSize="15sp"
+                android:textColor="#FFFF"
+                android:background="#7000"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:gravity="end"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="20dp"
+                android:layout_alignBottom="@+id/menu_type_thumbnail"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/menuitems_recycler_view"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/menu_type_name"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <GridLayout
+            android:id="@+id/menu_items_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:visibility="invisible">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/menu_item_card"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:elevation="3dp"
+                card_view:cardCornerRadius="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/menu_item_thumbnail"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:scaleType="fitXY"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp" />
+
+                    <TextView
+                        android:id="@+id/menu_item_name"
+                        android:textSize="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="#7000"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </GridLayout>
+        
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

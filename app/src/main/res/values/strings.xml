@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Breeze</string>
+    <string name="title_activity_main">Breeze</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main_screen">RestaurantsList</string>
+    <string name="title_activity_restaurant_screen">RestaurantPage</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="location_request">Location permission is required to find you nearby restaurants.
+    </string>
+    <string name="nearby_tab_label">Nearby</string>
+    <string name="suggested_tab_label">Suggested</string>
+    <string name="previous_tab_label">History</string>
+    <string name="menu_tab_label">Menu</string>
+    <string name="reserve_tab_label">Reserve</string>
+    <string name="pay_tab_label">Pay</string>
+    <string name="reservation_title">Reservations</string>
+    <string name="reservation_num">Number of Guests</string>
+    <string name="reservation_requests">Special Requests</string>
+    <string name="reservation_not_allowed">Oops! This reservations does not accept reservations through Breeze.</string>
+    <string name="payment_title">Payments</string>
+    <string name="payment_num">Number of Guests</string>
+    <string name="payment_not_allowed">Oops! This reservations does not accept payments through Breeze.</string>
+</resources>

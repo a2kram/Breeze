@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="akhamd.breeze.LoginScreen">
+    
+    <ImageView
+        android:id="@+id/BreezeLogo"
+        android:src="@drawable/breezelogo"
+        android:layout_width="178dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    
+    <EditText
+        android:id="@+id/LoginUsername"
+        android:hint="Enter username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BreezeLogo"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteY="148dp"
+        tools:layout_editor_absoluteX="152dp" />
+
+    <EditText
+        android:id="@+id/LoginPassword"
+        android:hint="Enter password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_below="@id/LoginUsername"
+        android:layout_alignLeft="@id/LoginUsername"
+        android:layout_alignRight="@id/LoginUsername"/>
+
+    <Button
+        android:id="@+id/LoginButton"
+        android:onClick="login"
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/LoginPassword"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
