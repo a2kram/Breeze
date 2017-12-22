@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 public class MenuOption implements Parcelable {
     private String mName;
-    private int mPrice;
+    private float mPrice;
     private String mThumbnailUrl;
 
-    MenuOption(String name, int price, String thumbnail_url)
+    MenuOption(String name, float price, String thumbnail_url)
     {
         mName = name;
         mPrice = price;
@@ -31,14 +31,14 @@ public class MenuOption implements Parcelable {
         return mThumbnailUrl;
     }
 
-    public int getPrice()
+    public float getPrice()
     {
         return mPrice;
     }
 
     protected MenuOption(Parcel in) {
         mName = in.readString();
-        mPrice = in.readInt();
+        mPrice = in.readFloat();
         mThumbnailUrl = in.readString();
     }
 
@@ -50,7 +50,7 @@ public class MenuOption implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mName);
-        dest.writeInt(mPrice);
+        dest.writeFloat(mPrice);
         dest.writeString(mThumbnailUrl);
     }
 

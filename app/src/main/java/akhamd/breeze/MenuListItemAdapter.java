@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class MenuListItemAdapter extends RecyclerView.Adapter<MenuListItemAdapter.ViewHolder>
 {
     private ArrayList<MenuOption> mMenuItemsList;
+    Intent DishSelected;
     private MenuOption mMenuOption;
 
     // Provide a reference to the views for each data item
