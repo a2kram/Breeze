@@ -32,6 +32,9 @@ public class LoginScreen extends AppCompatActivity {
 
                 if (CurrentUser != null)
                 {
+                    Globals g = Globals.getInstance();
+                    g.setUser(CurrentUser);
+
                     Toast.makeText(getApplicationContext(), "Welcome " + CurrentUser.getName() + "!",
                             Toast.LENGTH_SHORT).show();
 

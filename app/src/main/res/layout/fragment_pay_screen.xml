@@ -45,7 +45,7 @@
             android:textSize="30sp"/>
 
         <ScrollView
-            android:id="@+id/reservation_details_container"
+            android:id="@+id/payment_details_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/payment_title_1"
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/reservation_details_container"
+            android:layout_below="@id/payment_details_container"
             android:layout_marginTop="20dp"/>
     </RelativeLayout>
 

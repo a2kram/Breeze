@@ -141,7 +141,7 @@ public class RestaurantListFragment extends Fragment
         dessert.add(option8);
 
         nearbyList.add(new Restaurant("Burgers and Gyros", "Redmond, WA",
-                                      "https://scontent.fsnc1-1.fna.fbcdn.net/v/t31.0-8/16422807_1305184579542889_8893374022346477451_o.jpg?oh=27baecd9ac22afbbb871d5252eed91d8&oe=5A3F4F6C",
+                                      "https://media-cdn.tripadvisor.com/media/photo-s/08/94/5c/91/baba-s-burgers-gyros.jpg",
                                       5, true, true, true, labels, pics, 10, appetizers, main, dessert));
         nearbyList.add(new Restaurant("Inchins Bamboo Garden", "Redmond, WA",
                                       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcqRB6_9aztQZ3_ZKTcrSrJ3JBT8xc-OruNIHYoPHq6mpzfimiFA",
@@ -169,7 +169,7 @@ public class RestaurantListFragment extends Fragment
         ArrayList<Restaurant> suggestedList = new ArrayList<Restaurant>();
 
         suggestedList.add(new Restaurant("Burgers and Gyros", "Redmond, WA",
-                                         "https://scontent.fsnc1-1.fna.fbcdn.net/v/t31.0-8/16422807_1305184579542889_8893374022346477451_o.jpg?oh=27baecd9ac22afbbb871d5252eed91d8&oe=5A3F4F6C",
+                                         "https://media-cdn.tripadvisor.com/media/photo-s/08/94/5c/91/baba-s-burgers-gyros.jpg",
                                          5, true, true, true, new ArrayList<String>(), new ArrayList<String>(), 10, new ArrayList<MenuOption>(), new ArrayList<MenuOption>(), new ArrayList<MenuOption>()));
         suggestedList.add(new Restaurant("Maza Grill", "Renton, WA",
                                          "http://mazagrill.co/wp-content/uploads/2016/04/1-Maza-Grill-Logo.png",
@@ -189,7 +189,7 @@ public class RestaurantListFragment extends Fragment
         ArrayList<Restaurant> prevList = new ArrayList<Restaurant>();
 
         prevList.add(new Restaurant("Burgers and Gyros", "Redmond, WA",
-                                    "https://scontent.fsnc1-1.fna.fbcdn.net/v/t31.0-8/16422807_1305184579542889_8893374022346477451_o.jpg?oh=27baecd9ac22afbbb871d5252eed91d8&oe=5A3F4F6C",
+                                    "https://media-cdn.tripadvisor.com/media/photo-s/08/94/5c/91/baba-s-burgers-gyros.jpg",
                                     5, true, true, true, new ArrayList<String>(), new ArrayList<String>(), 10, new ArrayList<MenuOption>(), new ArrayList<MenuOption>(), new ArrayList<MenuOption>()));
 
         return prevList;

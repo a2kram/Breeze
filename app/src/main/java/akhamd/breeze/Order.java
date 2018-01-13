@@ -13,10 +13,10 @@ public class Order implements Parcelable {
     private ArrayList<MenuOption> mDishesOrdered;
     private boolean mComplete;
 
-    Order(String restaurant, float price)
+    Order(String restaurant)
     {
         mRestaurant = restaurant;
-        mTotalPrice = price;
+        mTotalPrice = 0;
         mOrderDate = null;
         mDishesOrdered = new ArrayList<MenuOption>();
         mComplete = false;
@@ -35,6 +35,18 @@ public class Order implements Parcelable {
     public Date getDate()
     {
         return mOrderDate;
+    }
+
+    public String getOrderString()
+    {
+        String order = "";
+
+        for (MenuOption option : mDishesOrdered)
+        {
+            order += option.getName() + "\n";
+        }
+
+        return order;
     }
 
     public ArrayList<MenuOption> getDishes()

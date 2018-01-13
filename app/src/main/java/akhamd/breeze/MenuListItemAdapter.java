@@ -8,14 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MenuListItemAdapter extends RecyclerView.Adapter<MenuListItemAdapter.ViewHolder>
 {
     private ArrayList<MenuOption> mMenuItemsList;
-    Intent DishSelected;
-    private MenuOption mMenuOption;
+    String mRestaurant;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -23,8 +23,9 @@ public class MenuListItemAdapter extends RecyclerView.Adapter<MenuListItemAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        public TextView name, price;
-        public ImageView thumbnail;
+        TextView name, price;
+        ImageView thumbnail;
+        MenuOption option;
 
         public ViewHolder(View view)
         {
@@ -32,12 +33,24 @@ public class MenuListItemAdapter extends RecyclerView.Adapter<MenuListItemAdapte
             name = (TextView) view.findViewById(R.id.menu_item_name);
             price = (TextView) view.findViewById(R.id.menu_item_price);
             thumbnail = (ImageView) view.findViewById(R.id.menu_item_thumbnail);
+
+            view.setOnClickListener(new View.OnClickListener()
+            {
+                @Override public void onClick(View v)
+                {
+                    Toast.makeText(v.getContext(), name.getText() + " added to order", Toast.LENGTH_SHORT).show();
+                    User currentUser = Globals.getInstance().getUser();
+
+                    currentUser.addToOrder(mRestaurant, option);
+                }
+            });
         }
     }
 
     // Provide a suitable constructor
-    public MenuListItemAdapter(ArrayList<MenuOption> ItemsList)
+    public MenuListItemAdapter(String Restaurant, ArrayList<MenuOption> ItemsList)
     {
+        mRestaurant = Restaurant;
         mMenuItemsList = ItemsList;
     }
 
@@ -57,13 +70,12 @@ public class MenuListItemAdapter extends RecyclerView.Adapter<MenuListItemAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
-        mMenuOption = mMenuItemsList.get(position);
-
-        holder.name.setText(mMenuOption.getName());
-        holder.price.setText("$" + mMenuOption.getPrice());
+        holder.option = mMenuItemsList.get(position);
+        holder.name.setText(holder.option.getName());
+        holder.price.setText("$" + holder.option.getPrice());
 
         DataSync OuterClass = new DataSync();
-        DataSync.GetImage task = OuterClass.new GetImage(mMenuOption.getThumbnailUrl(),
+        DataSync.GetImage task = OuterClass.new GetImage(holder.option.getThumbnailUrl(),
                                                          holder.thumbnail);
         task.execute();
     }

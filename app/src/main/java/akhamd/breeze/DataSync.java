@@ -38,7 +38,7 @@ public class DataSync
             }
             catch (Exception ex)
             {
-                Log.d("Hiiiiiiiiiiiiiiiiiiiiii", "failed " + ex);
+                Log.d("Image Download Failure", ex.toString());
             }
 
             return null;

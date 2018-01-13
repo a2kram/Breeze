@@ -72,10 +72,10 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHo
     }
 
     // Provide a suitable constructor
-    public MenuListAdapter(Activity activity, Restaurant Restaurant)
+    public MenuListAdapter(Activity activity, Restaurant restaurant)
     {
         mActivity = activity;
-        mRestaurant = Restaurant;
+        mRestaurant = restaurant;
     }
 
     // Create new views (invoked by the layout manager)
@@ -127,7 +127,7 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHo
         holder.recyclerview.setItemAnimator(new DefaultItemAnimator());
 
         // Specify an adapter
-        mAdapter = new MenuListItemAdapter(mMenuItems);
+        mAdapter = new MenuListItemAdapter(mRestaurant.getName(), mMenuItems);
         holder.recyclerview.setAdapter(mAdapter);
     }
 

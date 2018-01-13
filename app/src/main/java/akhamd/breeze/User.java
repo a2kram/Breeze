@@ -2,6 +2,9 @@ package akhamd.breeze;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
+import java.util.ArrayList;
 
 /**
  * Created by akhamd on 10/7/2017.
@@ -13,7 +16,7 @@ public class User implements Parcelable {
     private String mLocation;
     private String mThumbnailUrl;
     private UserType mType;
-    private Order mCurrentOrder;
+    ArrayList<Order> mCurrentOrders;
 
     public enum UserType{
         GUEST, OWNER, ADMIN
@@ -25,7 +28,7 @@ public class User implements Parcelable {
         mLocation = location;
         mThumbnailUrl = thumbnail_url;
         mType = type;
-        mCurrentOrder = null;
+        mCurrentOrders = null;
     }
 
     public String getName()
@@ -48,23 +51,50 @@ public class User implements Parcelable {
         return mType;
     }
 
-    public Order getOrder() { return mCurrentOrder; }
+    public Order getOrder(String restaurant)
+    {
+        for(Order order : mCurrentOrders)
+        {
+            if(order.getRestaurant().equals(restaurant))
+            {
+                return order;
+            }
+        }
+
+        return null;
+    }
 
     public int addToOrder(String restaurant, MenuOption dish)
     {
-        if(mCurrentOrder == null)
+        int result;
+
+        if(mCurrentOrders == null)
         {
-            mCurrentOrder = new Order(restaurant, 0);
+            mCurrentOrders = new ArrayList<Order>();
+        }
+        else
+        {
+            for(Order order : mCurrentOrders)
+            {
+                if(order.getRestaurant().equals(restaurant))
+                {
+                    return order.addToOrder(restaurant, dish);
+                }
+            }
         }
 
-        return mCurrentOrder.addToOrder(restaurant, dish);
+        Order order = new Order(restaurant);
+        result = order.addToOrder(restaurant, dish);
+        mCurrentOrders.add(order);
+
+        return result;
     }
 
     protected User(Parcel in) {
         mName = in.readString();
         mLocation = in.readString();
         mThumbnailUrl = in.readString();
-        mCurrentOrder = null;
+        mCurrentOrders = null;
     }
 
     @Override
@@ -77,7 +107,13 @@ public class User implements Parcelable {
         dest.writeString(mName);
         dest.writeString(mLocation);
         dest.writeString(mThumbnailUrl);
-        dest.writeParcelable(mCurrentOrder, flags);
+
+        if (mCurrentOrders == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeTypedList(mCurrentOrders);
+        }
     }
 
     @SuppressWarnings("unused")

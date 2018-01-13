@@ -2,6 +2,7 @@ package akhamd.breeze;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +23,9 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        public TextView name, location;
-        public ImageView thumbnail;
+        TextView name, location;
+        ImageView thumbnail;
+        Restaurant restaurant = null;
 
         public ViewHolder(View view)
         {
@@ -34,9 +36,12 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    RestaurantSelected = new Intent(v.getContext(), RestaurantScreen.class);
-                    RestaurantSelected.putExtra("restaurant", mRestaurant);
-                    v.getContext().startActivity(RestaurantSelected);
+                    if(restaurant != null)
+                    {
+                        RestaurantSelected = new Intent(v.getContext(), RestaurantScreen.class);
+                        RestaurantSelected.putExtra("restaurant", restaurant);
+                        v.getContext().startActivity(RestaurantSelected);
+                    }
                 }
             });
         }
@@ -68,6 +73,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
         holder.name.setText(mRestaurant.getName());
         holder.location.setText(mRestaurant.getLocation());
+        holder.restaurant = mRestaurant;
 
         DataSync OuterClass = new DataSync();
         DataSync.GetImage task = OuterClass.new GetImage(mRestaurant.getThumbnailUrl(),

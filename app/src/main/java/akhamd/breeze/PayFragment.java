@@ -1,5 +1,6 @@
 package akhamd.breeze;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -52,10 +53,25 @@ public class PayFragment extends Fragment
         PaymentLayoutFailure = (RelativeLayout)rootView.findViewById(R.id.payment_layout_failure);
         PaymentLayoutSuccess = (RelativeLayout)rootView.findViewById(R.id.payment_layout_success);
 
-        if(mRestaurant.isAcceptsReservations())
+        if(mRestaurant.isAcceptsPayments())
         {
             PaymentLayoutSuccess.setVisibility(View.VISIBLE);
             PaymentLayoutFailure.setVisibility(View.INVISIBLE);
+
+            User user = Globals.getInstance().getUser();
+
+            if(user == null)
+            {
+                Intent LoginSuccess = new Intent(getActivity(), LoginScreen.class);
+                startActivity(LoginSuccess);
+            }
+
+            Order order = user.getOrder(mRestaurant.getName());
+
+            if (order != null)
+            {
+                PayText.setText("Date: " + order.getDate() + "\nDetails:\n" + order.getOrderString() + "\nTotal: $" + order.getPrice());
+            }
         }
         else
         {
